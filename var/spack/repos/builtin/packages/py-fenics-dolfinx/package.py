@@ -33,7 +33,7 @@ class PyFenicsDolfinx(PythonPackage):
     depends_on("py-numpy", type=("run"))
 
     depends_on("py-fenics-fiat", type="test")
-    depends_on('py-numba', type="test")
+    # depends_on('py-numba', type="test")
     depends_on('py-pytest', type="test")
     depends_on('py-pytest-xdist', type="test")
     depends_on('py-scipy', type="test")
