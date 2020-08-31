@@ -21,7 +21,7 @@ class FenicsDolfinx(CMakePackage):
 
     depends_on("cmake@3.9:", type="build")
     depends_on("pkgconfig", type="build")
-    depends_on("mpi")
+    depends_on("mpi", type=("build", "run"))
     depends_on("hdf5+hl+fortran")
     depends_on("boost")
     depends_on("eigen@3.3.7:")
