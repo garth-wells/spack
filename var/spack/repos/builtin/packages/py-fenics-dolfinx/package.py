@@ -21,7 +21,6 @@ class PyFenicsDolfinx(PythonPackage):
     depends_on('python@3.5:', type=('build', 'run'))
     depends_on("py-setuptools", type="build")
     depends_on("fenics-dolfinx@master", type=('build', 'run'))
-    # depends_on("mpi")
     depends_on("boost")
     depends_on("py-mpi4py", type=("build", "run"))
     depends_on("py-petsc4py", type=("build", "run"))
