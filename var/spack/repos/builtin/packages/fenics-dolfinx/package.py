@@ -25,7 +25,7 @@ class FenicsDolfinx(CMakePackage):
     depends_on("hdf5+hl")
     depends_on("boost")
     depends_on("eigen@3.3.7:")
-    depends_on("petsc+mpi+shared+hypre+metis")
+    depends_on("petsc+mpi+shared+hypre")
     depends_on("scotch+mpi")
 
     depends_on("kahip", when="+kahip")
