@@ -11,10 +11,10 @@ class PyFenicsDolfinx(PythonPackage):
     environment"""
 
     homepage = "https://github.com/FEniCS/dolfinx"
-    git = "https://github.com/FEniCS/dolfinx.git@garth/test-spack"
+    git = "https://github.com/FEniCS/dolfinx.git"
     maintainers = ["js947", "chrisrichardson"]
 
-    version("master", branch="master")
+    version("master", branch="garth/test-spack")
 
     depends_on("cmake@3.9:", type="build")
     depends_on("pkgconfig", type=("build", "run"))
