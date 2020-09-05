@@ -41,13 +41,11 @@ class FenicsDolfinx(CMakePackage):
     def cmake_args(self):
         args = [
             "-DDOLFINX_SKIP_BUILD_TESTS=True",
-            "-DDOLFINX_ENABLE_KAHIP=%s" % (
-                'ON' if "+kahip" in self.spec else 'OFF'),
-            "-DDOLFINX_ENABLE_PARMETIS=%s" % (
-                'ON' if "+parmetis" in self.spec else 'OFF'),
-            "-DDOLFINX_ENABLE_SLEPC=%s" % (
-                'ON' if "+slepc" in self.spec else 'OFF'),
-            "-DPython3_ROOT_DIR=%s" % self.spec['python'].home,
+            "-DDOLFINX_ENABLE_KAHIP={0}".format('ON' if "+kahip" in self.spec else 'OFF'),
+            "-DDOLFINX_ENABLE_PARMETIS={0}".format('ON' if "+parmetis" in self.spec else 'OFF'),
+            "-DDOLFINX_ENABLE_SLEPC={0}".format('ON' if "+slepc" in self.spec else 'OFF'),
+            "-DBOOST_ROOT={0}".format(spec['boost'].prefix),
+            "-DPython3_ROOT_DIR={0}".format(self.spec['python'].home),
             "-DPython3_FIND_STRATEGY=LOCATION",
         ]
         return args
