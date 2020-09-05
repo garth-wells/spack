@@ -44,7 +44,7 @@ class FenicsDolfinx(CMakePackage):
             "-DDOLFINX_ENABLE_KAHIP={0}".format('ON' if "+kahip" in self.spec else 'OFF'),
             "-DDOLFINX_ENABLE_PARMETIS={0}".format('ON' if "+parmetis" in self.spec else 'OFF'),
             "-DDOLFINX_ENABLE_SLEPC={0}".format('ON' if "+slepc" in self.spec else 'OFF'),
-            "-DBOOST_ROOT={0}".format(spec['boost'].prefix),
+            "-DBOOST_ROOT={0}".format(self.spec['boost'].prefix),
             "-DPython3_ROOT_DIR={0}".format(self.spec['python'].home),
             "-DPython3_FIND_STRATEGY=LOCATION",
         ]
