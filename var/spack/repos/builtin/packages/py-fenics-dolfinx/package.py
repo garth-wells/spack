@@ -14,13 +14,13 @@ class PyFenicsDolfinx(PythonPackage):
     git = "https://github.com/FEniCS/dolfinx.git"
     maintainers = ["js947", "chrisrichardson"]
 
-    version("master", branch="garth/test-spack")
+    version("test", branch="garth/test-spack")
 
     depends_on("cmake@3.9:", type="build")
     depends_on("pkgconfig", type=("build", "run"))
     depends_on('python@3.5:', type=('build', 'run'))
     depends_on("py-setuptools", type="build")
-    depends_on("fenics-dolfinx@master", type=('build', 'run'))
+    depends_on("fenics-dolfinx@test", type=('build', 'run'))
     depends_on("mpi", type=("build", "run"))
     depends_on("boost")
     depends_on("py-mpi4py", type=("build", "run"))
