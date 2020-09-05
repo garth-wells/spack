@@ -10,7 +10,7 @@ class FenicsDolfinx(CMakePackage):
     """Next generation FEniCS problem solving environment"""
 
     homepage = "https://github.com/FEniCS/dolfinx"
-    git = "https://github.com/FEniCS/dolfinx.git"
+    git = "https://github.com/FEniCS/dolfinx.git@garth/test-spack"
     maintainers = ["js947", "chrisrichardson"]
 
     version("master", branch="master")

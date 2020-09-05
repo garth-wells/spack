@@ -11,7 +11,7 @@ class PyFenicsDolfinx(PythonPackage):
     environment"""
 
     homepage = "https://github.com/FEniCS/dolfinx"
-    git = "https://github.com/FEniCS/dolfinx.git"
+    git = "https://github.com/FEniCS/dolfinx.git@garth/test-spack"
     maintainers = ["js947", "chrisrichardson"]
 
     version("master", branch="master")
