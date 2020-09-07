@@ -62,6 +62,9 @@ class SuperluDist(CMakePackage):
             ';' + spec['metis'].prefix.include
         ]
 
+        print("****** (1):", spec['parmetis'].libs.ld_flags)
+        print("****** (2):", spec['metis'].libs.ld_flags)
+
         if (spec.satisfies('%xl') or spec.satisfies('%xl_r')) and \
            spec.satisfies('@:6.1.1'):
             args.append('-DCMAKE_C_FLAGS=-DNoChange')
