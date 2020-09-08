@@ -67,16 +67,16 @@ class Parmetis(CMakePackage):
             options.append('-DSHARED:BOOL=ON')
             if 'darwin' in self.spec.architecture:
                 options.append('-DCMAKE_MACOSX_RPATH=ON')
-        # else:
-        #     print("***** not shared")
-        #     # Remove all RPATH options
-        #     # (RPATHxxx options somehow trigger cmake to link dynamically)
-        #     rpath_options = []
-        #     for o in options:
-        #         if o.find('RPATH') >= 0:
-        #             rpath_options.append(o)
-        #     for o in rpath_options:
-        #         options.remove(o)
+        else:
+            print("***** not shared")
+            # Remove all RPATH options
+            # (RPATHxxx options somehow trigger cmake to link dynamically)
+            rpath_options = []
+            for o in options:
+                if o.find('RPATH') >= 0:
+                    rpath_options.append(o)
+            for o in rpath_options:
+                options.remove(o)
 
         if '+gdb' in spec:
             options.append('-DGDB:BOOL=ON')
@@ -87,4 +87,6 @@ class Parmetis(CMakePackage):
     def darwin_fix(self):
         # The shared library is not installed correctly on Darwin; fix this
         if (sys.platform == 'darwin') and ('+shared' in self.spec):
+            print("Fix ********",prefix.lib)
             fix_darwin_install_name(prefix.lib)
+

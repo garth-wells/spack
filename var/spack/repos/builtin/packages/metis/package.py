@@ -180,10 +180,9 @@ class Metis(Package):
         options.extend(['-DCMAKE_BUILD_TYPE:STRING={0}'.format(build_type)])
 
         if '+shared' in spec:
-            print("*****shared")
             options.append('-DSHARED:BOOL=ON')
-            if 'darwin' in self.spec.architecture:
-                options.append('-DCMAKE_MACOSX_RPATH=ON')
+            # if 'darwin' in self.spec.architecture:
+            #     options.append('-DCMAKE_MACOSX_RPATH=ON')
         else:
             # Remove all RPATH options
             # (RPATHxxx options somehow trigger cmake to link dynamically)
@@ -222,3 +221,9 @@ class Metis(Package):
             Executable(join_path(prefix.bin, 'gpmetis'))(graph, '2')
             graph = join_path(source_directory, 'graphs', 'metis.mesh')
             Executable(join_path(prefix.bin, 'mpmetis'))(graph, '2')
+
+    @run_after('install')
+    def darwin_fix(self):
+        # The shared library is not installed correctly on Darwin; fix this
+        if (sys.platform == 'darwin') and ('+shared' in self.spec):
+            fix_darwin_install_name(prefix.lib)
