@@ -63,16 +63,20 @@ class Parmetis(CMakePackage):
         ])
 
         if '+shared' in spec:
+            print("*****shared")
             options.append('-DSHARED:BOOL=ON')
-        else:
-            # Remove all RPATH options
-            # (RPATHxxx options somehow trigger cmake to link dynamically)
-            rpath_options = []
-            for o in options:
-                if o.find('RPATH') >= 0:
-                    rpath_options.append(o)
-            for o in rpath_options:
-                options.remove(o)
+            if 'darwin' in self.spec.architecture:
+                options.append('-DCMAKE_MACOSX_RPATH=ON')
+        # else:
+        #     print("***** not shared")
+        #     # Remove all RPATH options
+        #     # (RPATHxxx options somehow trigger cmake to link dynamically)
+        #     rpath_options = []
+        #     for o in options:
+        #         if o.find('RPATH') >= 0:
+        #             rpath_options.append(o)
+        #     for o in rpath_options:
+        #         options.remove(o)
 
         if '+gdb' in spec:
             options.append('-DGDB:BOOL=ON')

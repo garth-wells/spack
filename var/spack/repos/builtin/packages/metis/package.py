@@ -180,7 +180,10 @@ class Metis(Package):
         options.extend(['-DCMAKE_BUILD_TYPE:STRING={0}'.format(build_type)])
 
         if '+shared' in spec:
+            print("*****shared")
             options.append('-DSHARED:BOOL=ON')
+            if 'darwin' in self.spec.architecture:
+                options.append('-DCMAKE_MACOSX_RPATH=ON')
         else:
             # Remove all RPATH options
             # (RPATHxxx options somehow trigger cmake to link dynamically)
