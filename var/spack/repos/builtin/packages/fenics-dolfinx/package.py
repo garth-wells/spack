@@ -22,7 +22,7 @@ class FenicsDolfinx(CMakePackage):
     depends_on("cmake@3.9:", type="build")
     depends_on("pkgconfig", type="build")
     depends_on("mpi")
-    depends_on("hdf5+hl")
+    depends_on("hdf5")
     depends_on("boost@1.7.0:+filesystem+program_options+timer")
     depends_on("eigen@3.3.7:")
     depends_on("petsc+mpi+shared")
@@ -41,13 +41,9 @@ class FenicsDolfinx(CMakePackage):
     def cmake_args(self):
         args = [
             "-DDOLFINX_SKIP_BUILD_TESTS=True",
-            "-DDOLFINX_ENABLE_KAHIP=%s" % (
-                'ON' if "+kahip" in self.spec else 'OFF'),
-            "-DDOLFINX_ENABLE_PARMETIS=%s" % (
-                'ON' if "+parmetis" in self.spec else 'OFF'),
-            "-DDOLFINX_ENABLE_SLEPC=%s" % (
-                'ON' if "+slepc" in self.spec else 'OFF'),
-            # "-DBOOST_ROOT=%s" % self.spec['boost'].prefix,
+            "-DDOLFINX_ENABLE_KAHIP=%s" % ('ON' if "+kahip" in self.spec else 'OFF'),
+            "-DDOLFINX_ENABLE_PARMETIS=%s" % ('ON' if "+parmetis" in self.spec else 'OFF'),
+            "-DDOLFINX_ENABLE_SLEPC=%s" % ('ON' if "+slepc" in self.spec else 'OFF'),
             "-DPython3_ROOT_DIR=%s" % self.spec['python'].home,
             "-DPython3_FIND_STRATEGY=LOCATION",
         ]
